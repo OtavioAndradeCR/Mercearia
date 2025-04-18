@@ -3,13 +3,13 @@ from Models import *
 class DaoCategoria:
     @classmethod
     def salvar(cls, categoria):
-        with open('categoria.txt', 'a') as arq:
+        with open('categorias.txt', 'a') as arq:
             arq.writelines(categoria)
             arq.writelines('\n')
     
     @classmethod
     def ler(cls):
-        with open('categoria.txt', 'r') as arq:
+        with open('categorias.txt', 'r') as arq:
             cls.categoria = arq.readlines()
         
         cls.categoria = list(map(lambda x: x.replace('\n', ''), cls.categoria))
@@ -23,7 +23,7 @@ class DaoCategoria:
 class DaoVenda:
     @classmethod
     def salvar(cls, venda: Vendas):
-        with open('venda.txt', 'a') as arq:
+        with open('vendas.txt', 'a') as arq:
             arq.writelines(venda.itensVendidos.nome + "|" + venda.itensVendidos.preco + "|" 
                            + venda.itensVendidos.categoria + "|" + venda.vendedor + "|" + venda.comprador + "|" 
                            + str(venda.quantidadeVendida) + "|" + venda.data)
@@ -31,7 +31,7 @@ class DaoVenda:
     
     @classmethod
     def ler(cls):
-        with open('venda.txt', 'r') as arq:
+        with open('vendas.txt', 'r') as arq:
             cls.venda = arq.readlines()
         
         cls.venda = list(map(lambda x: x.replace('\n', ''), cls.venda))
@@ -67,14 +67,14 @@ class DaoEstoque:
 class DaoFornecedor:
     @classmethod
     def salvar(cls, fornecedor: Fornecedor):
-        with open('fornecedor.txt', 'a') as arq:
+        with open('fornecedores.txt', 'a') as arq:
             arq.writelines(fornecedor.nome + "|" + fornecedor.cnpj + "|" + fornecedor.telefone
                            + "|" + fornecedor.categoria)
             arq.writelines('\n')
 
     @classmethod
     def ler(cls):
-        with open('fornecedor.txt', 'r') as arq:
+        with open('fornecedores.txt', 'r') as arq:
             cls.fornecedor = arq.readlines()
         
         cls.fornecedor = list(map(lambda x: x.replace('\n', ''), cls.fornecedor))
